@@ -16,17 +16,16 @@ public class UserService {
 	UserRepository userRepository;
 
 	public List<User> getAllUser() {
-		List<User> user = new ArrayList<User>();
-		userRepository.findAll();
-		return user;
+		List<User> user=new ArrayList<>();
+		return userRepository.findAll();
 	}
 
 	public User getUserById(int id) {
 		return userRepository.findById(id).get();
 	}
 
-	public void saveOrUpdate(User user) {
-		userRepository.save(user);
+	public User update(User user) {
+		return userRepository.save(user);
 	}
 
 	public void delete(int id) {
@@ -34,8 +33,10 @@ public class UserService {
 
 	}
 
-	public void saveOrUpdate(User user, int id) {
+	public void create (User user) {
 		userRepository.save(user);
 	}
+
+	
 
 }
