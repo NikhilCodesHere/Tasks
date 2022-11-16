@@ -1,9 +1,13 @@
 package com.syntellect.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.syntellect.model.User;
@@ -37,6 +41,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	
+//	@Test
+//	public void getidmorethanvalue() {
+//		Integer value = 102;
+//		Pageable pageable= PageRequest.of(0, 0);
+//		List<User> userlist= userRepository.getuseridmorethanvalue(value,pageable);
+//		userlist.forEach(System.out::println);
+//	}
+//	
 
 }

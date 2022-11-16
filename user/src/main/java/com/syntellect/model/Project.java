@@ -1,4 +1,5 @@
 package com.syntellect.model;
+
 import javax.persistence.Entity;
 
 import javax.persistence.Column;
@@ -15,22 +16,19 @@ import org.apache.el.parser.AstFalse;
 import org.hibernate.type.TrueFalseType;
 
 @Entity
-@Table(name="project")
+@Table(name = "project")
 public class Project {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name="project_id",nullable=false)
+	@Column(name = "project_id", nullable = false)
 	private int projectId;
-	
-	
-	@Column (name="project_name")
+
+	@Column(name = "project_name")
 	private String projectName;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+
+	@Column(name = "user_id")
 	private int userId;
-	
-	private User user;
 
 	public int getProjectId() {
 		return projectId;
@@ -47,7 +45,6 @@ public class Project {
 	public void setprojectName(String projectName) {
 		this.projectName = projectName;
 	}
-	
 
 	public int getUserId() {
 		return userId;
@@ -61,16 +58,14 @@ public class Project {
 		super();
 		this.projectName = projectName;
 	}
-	
-	public Project(int projectId, String projectName,int userId) {
-		this.projectId=projectId;
-		this.projectName=projectName;
-		this.userId=userId;
+
+	public Project(int projectId, String projectName, int userId) {
+		this.projectId = projectId;
+		this.projectName = projectName;
+		this.userId = userId;
 	}
 
-	
-	
-	
-	
-	
+	public Project() {
+		
+	}
 }

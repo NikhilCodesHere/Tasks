@@ -6,24 +6,24 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user_table")	
+@Table(name = "user_table")
 
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name="user_id",nullable=false,unique = true)
+	@Column(name = "user_id", nullable = false, unique = true)
 	private int id;
 
-	@Column (name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column (name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@OneToMany (mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL )
-	
-	private List <Project> project= new ArrayList<>();
+
+	@OneToMany(targetEntity = Project.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
+	private List<Project> project = new ArrayList<>();
 
 	public List<Project> getProject() {
 		return project;
@@ -31,9 +31,8 @@ public class User {
 
 	public void setProject(List<Project> project) {
 		this.project = project;
-	
+
 	}
-	
 
 	public User(String firstName, String lastName) {
 		super();
@@ -65,18 +64,15 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	
-
 	public User(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		
+
 	}
 
 	public User() {
-		
-	}	
-	
+
+	}
 
 }
